@@ -3,6 +3,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Locale;
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class portScan {
     public static void main(String [] args) {
@@ -14,7 +15,7 @@ public class portScan {
         int portIn = 0;
         // Host to scan
         System.out.println("Enter Host to Scan:");
-        String AddToScan = scanIn.nextLine();
+        String ip = scanIn.nextLine();
 
         //Specify Option to (1) Scan all or (2) Strobe
         System.out.println("Would you like either (1) Scan All or (2) Specify ports to scan or (3) Scan most common ports?");
@@ -49,7 +50,7 @@ public class portScan {
                         timeout = 100;
                     }
                     Socket socket = new Socket();
-                    socket.connect(new InetSocketAddress(AddToScan, x), timeout);
+                    socket.connect(new InetSocketAddress(ip, x), timeout);
                     socket.close();
                     openPorts.add(x);
                 } catch (Exception ex) {
@@ -57,6 +58,7 @@ public class portScan {
                 }
             }
             System.out.println("Finished");
+            System.out.println("There are " + openPorts.size() + " open ports on host " + ip);
             System.out.print("Open Ports: " + openPorts + "\n");
             System.out.println("Closed Ports: " + closedPorts + "\n");
         }
@@ -74,7 +76,7 @@ public class portScan {
                         timeout = 100;
                     }
                     Socket socket = new Socket();
-                    socket.connect(new InetSocketAddress(AddToScan, port), timeout);
+                    socket.connect(new InetSocketAddress(ip, port), timeout);
                     socket.close();
                     openPorts.add(port);
                 } catch (Exception ex) {
@@ -82,6 +84,7 @@ public class portScan {
                 }
             }
             System.out.println("Finished");
+            System.out.println("There are " + openPorts.size() + " open ports on host " + ip);
             System.out.print("Open Ports: " + openPorts + "\n");
             System.out.println("Closed Ports: " + closedPorts + "\n");
         }
@@ -99,7 +102,7 @@ public class portScan {
                         timeout = 100;
                     }
                     Socket socket = new Socket();
-                    socket.connect(new InetSocketAddress(AddToScan, port), timeout);
+                    socket.connect(new InetSocketAddress(ip, port), timeout);
                     socket.close();
                     openPorts.add(port);
                 } catch (Exception ex) {
@@ -107,6 +110,7 @@ public class portScan {
                 }
             }
             System.out.println("Finished");
+            System.out.println("There are " + openPorts.size() + " open ports on host " + ip);
             System.out.print("Open Ports: " + openPorts + "\n");
             System.out.print("Closed Ports: " + closedPorts + "\n");
         }
